@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chronos: ** ******** del Ciclo Vital</title>
+    <script>
+        let score = 0;
+        let level = 1;
+        
+        function updateProgress() {
+            let progress = (level - 1) * 20;
+            let progressBar = document.getElementById("progress");
+            progressBar.style.width = progress + "%";
+            progressBar.innerText = progress + "%";
+        }
+        
+        function selectCharacter(character) {
+            alert("Has seleccionado: " + character);
+            startGame(character);
+        }
+        
+        function startGame(character) {
+            let challenges = {
+                1: {description: "Resolver un acertijo de lógica básica", theory: "Desarrollo sensoriomotor según Piaget."},
+                2: {description: "Tomar una decisión moral crucial", theory: "Egocentrismo en el pensamiento preoperacional según Piaget."},
+                3: {description: "Superar una prueba de resiliencia en grupo", theory: "Crisis de identidad en la adolescencia según Erikson."},
+                4: {description: "Gestionar conflictos en la adultez", theory: "Intimidad vs. aislamiento en la adultez según Erikson."},
+                5: {description: "Mantener la autonomía en la vejez", theory: "Integridad vs. desesperación en la vejez según Erikson."}
+            };
+            
+            let challenge = challenges[level];
+            let success = confirm("Nivel " + level + " - Desafío para " + character + ": " + challenge.description + "\n\nExplicación teórica: " + challenge.theory + "\n\n¿Lo superaste?");
+            
+            if (success) {
+                score += 10;
+                level++;
+                updateProgress();
+                if (level > 5) {
+                    endGame();
+                } else {
+                    startGame(character);
+                }
+            } else {
+                alert("No superaste el desafío. Sigue intentándolo.");
+            }
+        }
+        
+        function endGame() {
+            let outcome = score >= 40 ? "Envejecimiento saludable" : "Deterioro patológico";
+            alert("Juego finalizado. Resultado: " + outcome + "\nPuntaje final: " + score);
+            score = 0;
+            level = 1;
+            updateProgress();
+        }
+    </script>
+</head>
+
+<body>
+    <div>
+        <h1>Chronos: La ******** del ***** Vital</h1>
+        <p>Explora las etapas *** desarrollo humano a trav&eacute;s de un juego interactivo basado ** la psicolog&iacute;a evolutiva.</p>
+        <h2>Progreso del Juego</h2>
+        <div>
+            <div id="progress">0%</div>
+        </div>
+        <h2>Selecciona tu personaje</h2>
+        <div>
+            <div><strong>Br&iacute;o</strong>
+                <p>Infancia (0-2 a&ntilde;os) - Exploraci&oacute;n Sensorial</p>
+            </div>
+            <div><strong>Imagi</strong>
+                <p>Ni&ntilde;ez Temprana (3-6 a&ntilde;os) - Creatividad</p>
+            </div>
+            <div><strong>L&oacute;gi</strong>
+                <p>Ni&ntilde;ez ***** (7-11 a&ntilde;os) - ************ L&oacute;gico</p>
+            </div>
+            <div><strong>Risco</strong>
+                <p>Adolescencia (12-18 a&ntilde;os) - Exploraci&oacute;n y Autonom&iacute;a</p>
+            </div>
+            <div><strong>Metis</strong>
+                <p>Adultez Temprana (19-40 a&ntilde;os) - Planificaci&oacute;n</p>
+            </div>
+            <div><strong>Geni</strong>
+                <p>Adultez Media (40-65 a&ntilde;os) - Generatividad</p>
+            </div>
+            <div><strong>Clari</strong>
+                <p>Vejez (65+ a&ntilde;os) - Sabidur&iacute;a</p>
+            </div>
+        </div>
+        <div>
+            <p>Creado por: <strong>Daniela Arroyave Atehort&uacute;a</strong></p>
+            <p>Profesora ********* Psicolog&iacute;a</p>
+            <p>Contacto: <a href="mailto:daniela.arroyave@campusucc.edu.co">daniela.arroyave@campusucc.edu.co</a></p>
+        </div>
+    </div>
+
+<div style="color: red">Prueba de Word a HTML - por favor <a href="https://wordtohtml.net/site/payment">Go PRO</a> para obtener el HTML completo.</div>
+</body>
+
+</html>
